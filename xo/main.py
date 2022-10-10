@@ -1,18 +1,18 @@
 import threading
 import time
-from io.console import CLIScreen
 
-from mark_enum import Mark
+from xo.input_output.console import Console
+from xo.mark_enum import Mark
 
 
 def main():
-    screen = CLIScreen()
-    thread = threading.Thread(target=screen.start)
+    screen = Console()
+    thread = threading.Thread(target=screen.start_game)
     thread.start()
     time.sleep(5)
-    screen.fill_location((1, 1), Mark.Ex)
+    screen.mark((1, 1), Mark.Ex)
     time.sleep(5)
-    screen.stop()
+    screen.stop_game()
 
 
 if __name__ == "__main__":

@@ -1,8 +1,10 @@
+from __future__ import annotations
+
 import os
 import time
 from typing import TYPE_CHECKING
 
-from xo.io.user_input_enum import UserInput
+from xo.input_output.user_input_enum import UserInput
 from xo.mark_enum import Mark
 
 
@@ -11,7 +13,7 @@ def cls():
 
 
 if TYPE_CHECKING:
-    from xo.io.user_input_consumer import UserInputConsumer
+    from xo.input_output.user_input_consumer import UserInputConsumer
 
 
 class Console:

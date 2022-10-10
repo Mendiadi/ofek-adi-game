@@ -1,6 +1,6 @@
 from typing import Protocol
 
-from xo.io.user_input_enum import UserInput
+from xo.input_output.user_input_enum import UserInput
 
 
 class UserInputConsumer(Protocol):
