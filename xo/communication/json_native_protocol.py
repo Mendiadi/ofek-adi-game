@@ -5,6 +5,7 @@ import typing
 from xo.mark_enum import Mark
 import json
 
+
 class JsonNativeProtocol:
     LOCATION_FIELD = "location"
     FIRST_LOCATION_FIELD = "x"
@@ -21,13 +22,15 @@ class JsonNativeProtocol:
 
     def send_movement(self, location: tuple[int, int], value: Mark):
         x, y = location
-        data = json.dumps({
-            self.LOCATION_FIELD : {
-                self.FIRST_LOCATION_FIELD: x,
-                self.SECOND_LOCATION_FIELD: y,
-            },
-            self.VALUE_FIELD: value.value
-        }).encode()
+        data = json.dumps(
+            {
+                self.LOCATION_FIELD: {
+                    self.FIRST_LOCATION_FIELD: x,
+                    self.SECOND_LOCATION_FIELD: y,
+                },
+                self.VALUE_FIELD: value.value,
+            }
+        ).encode()
         self._sock.sendall(data)
 
     def recv_movement(self) -> tuple[tuple[int, int], Mark]:

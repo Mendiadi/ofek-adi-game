@@ -5,14 +5,18 @@ from xo.mark_enum import Mark
 from xo.io.input import UserInput
 from typing import TYPE_CHECKING, Optional
 
+
 def cls():
-    os.system('cls' if os.name=='nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
+
 
 if TYPE_CHECKING:
     from xo.io.user_input_consumer import UserInputConsumer
 
+
 class Console:
     PRINTING_RATE = 10
+
     def __init__(self):
         self._grid: list[list[Mark]] = [
             [Mark.EMPTY, Mark.EMPTY, Mark.EMPTY],
@@ -36,21 +40,21 @@ class Console:
 
     def stop_game(self):
         self._is_running = False
-    
+
     def set_alert(self, alert: str):
         self._alert = alert
         if not self._is_running:
             print(alert)
-    
+
     def stop_alert(self):
         self._alert = ""
 
-    
     def subscribe_consumer(self, consumer: UserInputConsumer):
         ...
 
     def _print_screen(self):
-        print(f"""
+        print(
+            f"""
 {self._grid[0][0].value} | {self._grid[0][1].value} | {self._grid[0][2].value}
 --------
 {self._grid[1][0].value} | {self._grid[1][1].value} | {self._grid[1][2].value}
@@ -58,9 +62,12 @@ class Console:
 {self._grid[2][0].value} | {self._grid[2][1].value} | {self._grid[2][2].value} 
 
 {self._alert}
-            """)
+            """
+        )
 
-    def _send_input_to_consumers(self, user_input: UserInput, data: Optional[dict] = None):
+    def _send_input_to_consumers(
+        self, user_input: UserInput, data: Optional[dict] = None
+    ):
         for consumer in self._input_consumers:
             consumer.handle_input(user_input, data)
 
@@ -70,15 +77,14 @@ class Console:
     def _handle_game_start_input(self):
         if not self._is_running:
             self._send_input_to_consumers(UserInput.START_GANE)
-    
+
     def _handle_game_stop_input(self):
         if self._is_running:
             self._send_input_to_consumers(UserInput.STOP_GAME)
-    
+
     def _handle_mark_input(self):
         if self._is_running:
             return
-        
 
         # self._send_input_to_consumers(UserInput.MARKING, {
         #     consts.MARK_LOCATION_INPUT_DATA_KEY: location
@@ -91,6 +97,5 @@ class Console:
         # }
         # while True:
         #     user_input = input()
-        #     if 
+        #     if
         ...
-
