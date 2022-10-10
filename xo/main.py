@@ -1,8 +1,8 @@
 import threading
 import time
+from io.console import CLIScreen
 
 from mark_enum import Mark
-from io.console import CLIScreen
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
     thread = threading.Thread(target=screen.start)
     thread.start()
     time.sleep(5)
-    screen.fill_location((1, 1), Mark.X)
+    screen.fill_location((1, 1), Mark.Ex)
     time.sleep(5)
     screen.stop()
 

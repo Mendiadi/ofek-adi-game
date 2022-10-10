@@ -2,6 +2,6 @@ from enum import Enum
 
 
 class Mark(Enum):
-    X = "x"
-    O = "o"
+    Ex = "x"
+    Circule = "o"
     EMPTY = " "

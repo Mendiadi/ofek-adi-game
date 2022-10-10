@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-import socket
-import typing
-from xo.mark_enum import Mark
 import json
+import socket
+
+from xo.mark_enum import Mark
 
 
 class JsonNativeProtocol:
@@ -15,7 +15,8 @@ class JsonNativeProtocol:
 
     @classmethod
     def connect(cls, addr: str) -> JsonNativeProtocol:
-        return cls(None)
+        # return cls(None)
+        ...
 
     def __init__(self, sock: socket.socket):
         self._sock = sock

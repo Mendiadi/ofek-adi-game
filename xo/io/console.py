@@ -1,9 +1,9 @@
 import os
-from xo import consts
 import time
-from xo.mark_enum import Mark
+from typing import TYPE_CHECKING
+
 from xo.io.input import UserInput
-from typing import TYPE_CHECKING, Optional
+from xo.mark_enum import Mark
 
 
 def cls():
@@ -59,15 +59,13 @@ class Console:
 --------
 {self._grid[1][0].value} | {self._grid[1][1].value} | {self._grid[1][2].value}
 --------
-{self._grid[2][0].value} | {self._grid[2][1].value} | {self._grid[2][2].value} 
+{self._grid[2][0].value} | {self._grid[2][1].value} | {self._grid[2][2].value}
 
 {self._alert}
             """
         )
 
-    def _send_input_to_consumers(
-        self, user_input: UserInput, data: Optional[dict] = None
-    ):
+    def _send_input_to_consumers(self, user_input: UserInput, data: dict | None = None):
         for consumer in self._input_consumers:
             consumer.handle_input(user_input, data)
 
