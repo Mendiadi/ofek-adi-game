@@ -1,0 +1,1 @@
+MARK_LOCATION_INPUT_DATA_KEY = "mark_location"

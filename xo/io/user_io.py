@@ -1,6 +1,9 @@
-from typing import Protocol, Callable
+from typing import Protocol, TYPE_CHECKING
 
 from xo.mark_enum import Mark
+
+if TYPE_CHECKING:
+    from xo.io.user_input_consumer import UserInputConsumer
 
 class UserIO(Protocol):
 
@@ -10,15 +13,9 @@ class UserIO(Protocol):
         ...
     def set_alert(self, alert: str):
         ...
-    def fill_location(self, location: tuple[int, int], value: Mark):
-        ...
     def stop_alert(self):
         ...
-    def subscribe_to_user_input_quit(self, callback: Callable[[None], None]):
+    def mark(self, location: tuple[int, int], value: Mark):
         ...
-    def subscribe_to_user_input_stop_game(self, callback: Callable[[None], None]):
-        ...
-    def subscribe_to_user_input_location_fill(self, callback: Callable[[tuple[int, int], Mark], None]):
-        ...
-    def subscribe_to_user_input_peer(self, callback: Callable[[str], None]):
+    def subscribe_consumer(self, consumer: UserInputConsumer):
         ...
