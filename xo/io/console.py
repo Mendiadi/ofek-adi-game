@@ -2,7 +2,7 @@ import os
 import time
 from typing import TYPE_CHECKING
 
-from xo.io.input import UserInput
+from xo.io.user_input_enum import UserInput
 from xo.mark_enum import Mark
 
 
